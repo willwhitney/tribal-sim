@@ -18,6 +18,12 @@ class Painter
       @context.fillStyle = '#' + person.color()
       @context.fillRect person.position.x - 1, person.position.y - 1, 3, 3
       
+      @context.font = '8pt Helvetica'
+      @context.fillStyle = 'red'
+      @context.fillText Math.round(person.aggression * 100) / 100, person.position.x - 7, person.position.y - 4
+      @context.fillStyle = 'green'
+      @context.fillText Math.round(person.personality * 100) / 100, person.position.x - 7, person.position.y - 13
+      
   update: (timestamp) =>
     progress = timestamp - @time
     @time = timestamp
@@ -33,6 +39,6 @@ class Painter
 
 $ ->
   
-  painter = new Painter 50
+  painter = new Painter 5
   
   window.webkitRequestAnimationFrame painter.update, painter.canvas
